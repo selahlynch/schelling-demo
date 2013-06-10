@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $("button").click(function(){
-    alert("hello");
+    var gridSize = $("#grid-size").val();
+    $("#grid-size-div").html(gridSize);
   });
 }); 
 
