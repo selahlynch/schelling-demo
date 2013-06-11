@@ -1,0 +1,11 @@
+
+*make a separate object to keep track of the agents
+**assume JSON is the way to do that
+
+*make a render function ot take the agents objects and display it on the table
+
+*make a continuing animation that cycles through one agent at a time and moves it to a new location
+
+*style the table cells to have less wasted space
+
+

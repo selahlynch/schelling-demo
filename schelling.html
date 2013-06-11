@@ -3,15 +3,30 @@
 <head>
 <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
 <script src="schelling.js"></script>
+<style>
+td{
+  border:1px solid #000;
+  width:10px;
+  height:10px;
+}
+td.occupied{
+  background: #0000ff;
+}
+</style>
 </head>
 <body>
-<h2>Make sure this is running on a server, not on your local machine!!</h2>
-Grid size
-<input type="text" id="grid-size" name="grid-size" value="4"/>
-<button type="button">Create Table</button>
+<label for="grid-size-inp">Grid size</label>
+<input type="text" id="grid-size-inp" value="4"/>
+<br>
+<label for="num-agents-inp">Number of Agents</label>
+<input type="text" id="num-agents-inp" value="4"/>
+<br>
+<button type="button" id="render-button">Update</button>
 <br>
 <br>
 <div id="table-div"></div>
+
+<p class="warning">**Might not work on your local machine. Put on a proper html server.</p>
 
 </body>
 </html> 
