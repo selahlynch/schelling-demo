@@ -1,9 +1,5 @@
 
-*post my code to coursera forum
-**https://medium.com/kr-projects/d32c46e9e4a5
-
 *make a separate object to keep track of the agents
-**assume JSON is the way to do that
 
 *make a render function ot take the agents objects and display it on the table
 
