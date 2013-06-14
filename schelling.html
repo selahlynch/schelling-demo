@@ -3,6 +3,7 @@
 <head>
 <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
 <script src="agents.js"></script>
+<script src="rendering.js"></script>
 <script src="schelling.js"></script>
 <style>
 td{
@@ -17,20 +18,24 @@ td.occupied{
 </head>
 <body>
 <label for="grid-size-inp">Grid size</label>
-<input type="text" id="grid-size-inp" value="4"/>
+<input type="text" id="grid-size-inp" value="5"/>
 <br>
 <label for="num-agents-inp">Number of Agents</label>
-<input type="text" id="num-agents-inp" value="4"/>
+<input type="text" id="num-agents-inp" value="10"/>
+<br>
+<label for="agent-threshold-inp">Agent Threshold</label>
+<input type="text" id="agent-threshold-inp" value="1"/>
 <br>
 <button type="button" id="render-button">Update</button>
 <br>
 <br>
 <div id="table-div"></div>
 
-<p class="warning">**Might not work on your local machine. Put on a proper html server.</p>
-
 </body>
 </html> 
+
+
+
 
 
 
