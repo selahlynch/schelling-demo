@@ -1,7 +1,7 @@
 
-*make a separate object to keep track of the agents
-
 *make a render function ot take the agents objects and display it on the table
+
+*improve managment of variables and scopes, play with closures and objects
 
 *make a continuing animation that cycles through one agent at a time and moves it to a new location
 
