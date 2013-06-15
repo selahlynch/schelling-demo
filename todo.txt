@@ -1,8 +1,20 @@
 
-*improve managment of variables and scopes, play with closures and objects
+*connect input boxes to my grid simulator
+
+*improve the object orientedness of my grid simulator
+
+*make it so I can have three simultaneous grid simulators
 
 *make a continuing animation that cycles through one agent at a time and moves it to a new location
 
 *style the table cells to have less wasted space
+
+
+
+
+
+
+
+
 
 

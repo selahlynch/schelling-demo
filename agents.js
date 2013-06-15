@@ -1,26 +1,30 @@
-grid_size = 3;
-num_agents = 4;
-neighbor_threshold = 1;
+function initialize_grid(grid_size, num_agents, threshold){
+  //make a grid full of zeros
+  var grid = zeros([grid_size, grid_size]);
 
-//make a grid full of zeros
-grid = zeros([grid_size, grid_size]);
+  //make a set of agents
+  var dummy_agent = {
+    type:0,
+    pos_x:0,
+    pos_y:0
+  }
 
-//make a set of agents
-dummy_agent = {
-  type:0,
-  pos_x:0,
-  pos_y:0
+  var agent_array = [];
+
+  //initializing the agents
+  for (var i=0;i<num_agents;i++)
+  {
+    agent_array.push(Object.create(dummy_agent));
+    agent_array[i].type = 1;
+    set_to_random_available_pos(agent_array[i], grid);
+  }
+
+  return {
+    grid:grid,
+    agent_array:agent_array
+  };
 }
 
-var agent_array = [];
-
-//initializing the agents
-for (var i=0;i<num_agents;i++)
-{
-  agent_array.push(Object.create(dummy_agent));
-  agent_array[i].type = 1;
-  set_to_random_available_pos(agent_array[i], grid);
-}
 
 function increment_agents(agent_array, grid){
   for(var i = 0; i < agent_array.length; i++){
