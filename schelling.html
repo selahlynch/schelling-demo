@@ -17,14 +17,20 @@ td.occupied{
 </style>
 </head>
 <body>
+This is a simple simulation inspired by Schellings segregation model.<br>
+Each colored square represents an "agent".  An agent doesn't like to <br>
+have too many neighbors.  The threshold dictates how many neighbors <br>
+an agent will accept.  For the right set of parameters, if you press <br>
+update repeatedly, the pattern will reach a steady state. <br>
+<br>
 <label for="grid-size-inp">Grid size</label>
-<input type="text" id="grid-size-inp" value="5"/>
+<input type="text" id="grid-size-inp" value="10"/>
 <br>
 <label for="num-agents-inp">Number of Agents</label>
-<input type="text" id="num-agents-inp" value="10"/>
+<input type="text" id="num-agents-inp" value="52"/>
 <br>
 <label for="agent-threshold-inp">Agent Threshold</label>
-<input type="text" id="agent-threshold-inp" value="1"/>
+<input type="text" id="agent-threshold-inp" value="4"/>
 <br>
 <button type="button" id="init-button">Initialize</button>
 <br>
