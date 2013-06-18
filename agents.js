@@ -1,78 +1,99 @@
-function initialize_grid(grid_size, num_agents, threshold){
-  //make a grid full of zeros
-  var grid = zeros([grid_size, grid_size]);
+//is this object too big??
 
-  //make a set of agents
-  var dummy_agent = {
-    type:0,
-    pos_x:0,
-    pos_y:0
-  }
+var sim = function(){
 
-  var agent_array = [];
+  var grid_size, agent_count, threshold;
+  var agent_grid, agent_array;
 
-  //initializing the agents
-  for (var i=0;i<num_agents;i++)
-  {
-    agent_array.push(Object.create(dummy_agent));
-    agent_array[i].type = 1;
-    set_to_random_available_pos(agent_array[i], grid);
-  }
+  var available_position = function(){
+    avpos = available_positions();
+    return avpos[Math.floor(Math.random()*avpos.length)];
+  };
+
+  var available_positions = function(){
+    var res = [];
+    for(var i = 0; i < grid_size; i++){
+      for(var j = 0; j < grid_size; j++){
+        if(!agent_grid[i][j]){
+          res.push([i,j]);
+        }
+      }
+    }
+    return res;
+  };
+
+  var is_happy = function(agent){
+    var x = agent.pos_x;
+    var y = agent.pos_y;
+    var neighbor_count = 0;
+    if (x-1 > 0 && agent_grid[x-1][y-1]) neighbor_count++;
+    if (x-1 > 0 && agent_grid[x-1][y]) neighbor_count++;
+    if (x-1 > 0 && agent_grid[x-1][y+1]) neighbor_count++;
+    if (agent_grid[x][y-1]) neighbor_count++;
+    if (agent_grid[x][y+1]) neighbor_count++;
+    if (x+1 < agent_grid.length-1 && agent_grid[x+1][y-1]) neighbor_count++;
+    if (x+1 < agent_grid.length-1 && agent_grid[x+1][y]) neighbor_count++;
+    if (x+1 < agent_grid.length-1 && agent_grid[x+1][y+1]) neighbor_count++;
+    return neighbor_count < threshold;    
+  };
+  
+  var move_randomly = function(agent){
+    old_pos = [agent.pos_x, agent.pos_y]
+    new_pos = available_position();
+    agent.pos_x = new_pos[0];
+    agent.pos_y = new_pos[1];
+    agent_grid[new_pos[0]][new_pos[1]] = agent;
+    agent_grid[old_pos[0]][old_pos[1]] = 0;
+  };
+
+  var place_new_agent = function(pos){
+    agent = {
+      state:1,
+      pos_x:pos[0],
+      pos_y:pos[1]
+    };
+    agent_grid[pos[0]][pos[1]] = agent;
+    agent_array.push(agent);
+  };
 
   return {
-    grid:grid,
-    agent_array:agent_array
-  };
-}
-
-
-function increment_agents(agent_array, grid){
-  for(var i = 0; i < agent_array.length; i++){
-    var agent = agent_array[i];
-    if (num_neighbors(agent, grid) > neighbor_threshold){
-      set_to_random_available_pos(agent, grid);    
-    }
-  }
-}
-
-function num_neighbors(agent, grid){
-  var x = agent.pos_x;
-  var y = agent.pos_y;
-  var neighbors = 0;
-  if (x-1 > 0 && grid[x-1][y-1]) neighbors++;
-  if (x-1 > 0 && grid[x-1][y]) neighbors++;
-  if (x-1 > 0 && grid[x-1][y+1]) neighbors++;
-  if (grid[x][y-1]) neighbors++;
-  if (grid[x][y+1]) neighbors++;
-  if (x+1 < grid.length-1 && grid[x+1][y-1]) neighbors++;
-  if (x+1 < grid.length-1 && grid[x+1][y]) neighbors++;
-  if (x+1 < grid.length-1 && grid[x+1][y+1]) neighbors++;
-  return neighbors;
-}
-
-
-function set_to_random_available_pos(agent, grid){
-  avail_pos_array = avail_pos(grid);
-  var new_pos = avail_pos_array[Math.floor(Math.random()*avail_pos_array.length)];
-  var old_pos = [agent.pos_x, agent.pos_y];
-  grid[old_pos[0]][old_pos[1]] = 0;
-  grid[new_pos[0]][new_pos[1]] = agent;
-  agent.pos_x = new_pos[0];
-  agent.pos_y = new_pos[1];
-}
-
-function avail_pos(grid){
-  avail_pos_array = [];
-  for(var i = 0; i<grid.length; i++){
-    for(var j = 0; j<grid.length; j++){
-      if(!grid[i][j]){
-        avail_pos_array.push([i,j]);
+    init: function(gs, ac, th){ //maybe this isn't the best style??
+      grid_size = gs;
+      agent_count = ac; 
+      threshold = th;
+      agent_grid = zeros([grid_size, grid_size]);
+      agent_array = [];
+      for(var i = 0; i < agent_count; i++){
+        place_new_agent(available_position());
       }
-    }  
-  }
-  return avail_pos_array;
-}
+    },
 
+    update: function(){
+      for(var i = 0; i < agent_count; i++){
+        if(!is_happy(agent_array[i])){
+          move_randomly(agent_array[i]);
+        }
+      }
+    },
+
+    bitmap: function(){
+      var x,y;
+      var bitmap = zeros([grid_size, grid_size]);
+      for(var i = 0; i < agent_count; i++){
+        x = agent_array[i].pos_x;
+        y = agent_array[i].pos_y;
+        bitmap[x][y] = agent_array[i].state;
+      }
+      return bitmap;
+    }
+
+  };
+}();
+
+
+////functions external to this object/////
+//should I be putting this in the object???
+//this is an external dependency!
 
 function zeros(dimensions) {
     var array = [];
@@ -83,5 +104,7 @@ function zeros(dimensions) {
 
     return array;
 }
+
+
 
 
