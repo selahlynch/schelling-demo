@@ -2,7 +2,7 @@ var sim = [];
   
 $(document).ready(function(){
 
-  for(var j = 1; j<=3; j++){
+  for(var j = 0; j<3; j++){
     initialize(j);
     $("#init-button"+j).click(function(){
       var save_j = j;

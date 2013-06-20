@@ -15,8 +15,11 @@ td{
   width:10px;
   height:10px;
 }
-td.occupied{
-  background: #0000ff;
+[data-state="1"]{
+  background: #0000aa;
+}
+[data-state="2"]{
+  background: #00aa00;
 }
 </style>
 </head>
@@ -28,20 +31,26 @@ an agent will accept.  For the right set of parameters, if you press <br>
 update repeatedly, the pattern will reach a steady state. <br>
 <br>
 <label for="grid-size-inp">Grid size</label>
-<input type="text" id="grid-size-inp" value="10"/>
+<input type="text" id="grid-size-inp" value="12"/>
 <br>
 <label for="num-agents-inp">Number of Agents</label>
-<input type="text" id="num-agents-inp" value="52"/>
+<input type="text" id="num-agents-inp" value="75"/>
 <br>
 <label for="agent-threshold-inp">Agent Threshold</label>
 <input type="text" id="agent-threshold-inp" value="4"/>
 <br>
+<button id="init-button0">Initialize0</button>
 <button id="init-button1">Initialize1</button>
 <button id="init-button2">Initialize2</button>
-<button id="init-button3">Initialize3</button>
 <br>
 <br>
 <br>
+<div id="sim-div0" class="sim-div">
+  <h4 id="param0"></h4>
+  <div id="table-div0"></div>
+  <button id="update-button0">Update</button>  
+  <button id="runstop0">Run</button>  
+</div>
 <div id="sim-div1" class="sim-div">
   <h4 id="param1"></h4>
   <div id="table-div1"></div>
@@ -53,12 +62,6 @@ update repeatedly, the pattern will reach a steady state. <br>
   <div id="table-div2"></div>
   <button id="update-button2">Update</button>  
   <button id="runstop2">Run</button>  
-</div>
-<div id="sim-div3" class="sim-div">
-  <h4 id="param3"></h4>
-  <div id="table-div3"></div>
-  <button id="update-button3">Update</button>  
-  <button id="runstop3">Run</button>  
 </div>
 <br>
 </body>

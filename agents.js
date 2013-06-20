@@ -9,8 +9,11 @@ var simGen = function(grid_size, agent_count, threshold){
     threshold = th;
     agent_grid = zeros([grid_size, grid_size]);
     agent_array = [];
-    for(var i = 0; i < agent_count; i++){
-      place_new_agent(available_position());
+    for(var i = 0; i < agent_count/2; i++){
+      place_new_agent(1);
+    }
+    for(var i = 0; i < agent_count/2; i++){
+      place_new_agent(2);
     }
   };
 
@@ -34,16 +37,28 @@ var simGen = function(grid_size, agent_count, threshold){
   var is_happy = function(agent){
     var x = agent.pos_x;
     var y = agent.pos_y;
-    var neighbor_count = 0;
-    if (x-1 > 0 && agent_grid[x-1][y-1]) neighbor_count++;
-    if (x-1 > 0 && agent_grid[x-1][y]) neighbor_count++;
-    if (x-1 > 0 && agent_grid[x-1][y+1]) neighbor_count++;
-    if (agent_grid[x][y-1]) neighbor_count++;
-    if (agent_grid[x][y+1]) neighbor_count++;
-    if (x+1 < agent_grid.length-1 && agent_grid[x+1][y-1]) neighbor_count++;
-    if (x+1 < agent_grid.length-1 && agent_grid[x+1][y]) neighbor_count++;
-    if (x+1 < agent_grid.length-1 && agent_grid[x+1][y+1]) neighbor_count++;
-    return neighbor_count < threshold;    
+    var state = agent.state;
+    var pos_to_check = [];
+    if (x-1 >= 0){
+      pos_to_check.push([x-1,y-1]);
+      pos_to_check.push([x-1,y]);
+      pos_to_check.push([x-1,y+1]);
+    }
+    pos_to_check.push([x,y-1]);
+    pos_to_check.push([x,y+1]);
+    if(x+1 <= agent_grid.length-1){
+      pos_to_check.push([x+1,y-1]);
+      pos_to_check.push([x+1,y]);
+      pos_to_check.push([x+1,y+1]);    
+    }
+    var similar_neighbor_count = 0;
+    for(var i = 0; i < pos_to_check.length; i++){
+      var xx = pos_to_check[i][0];
+      var yy = pos_to_check[i][0];
+      if(agent_grid[xx][yy] && agent_grid[xx][yy].state==state) similar_neighbor_count++;
+    }
+
+    return similar_neighbor_count >= threshold;    
   };
   
   var move_randomly = function(agent){
@@ -55,9 +70,10 @@ var simGen = function(grid_size, agent_count, threshold){
     agent_grid[old_pos[0]][old_pos[1]] = 0;
   };
 
-  var place_new_agent = function(pos){
+  var place_new_agent = function(agent_state){
+    var pos = available_position();
     agent = {
-      state:1,
+      state:agent_state,
       pos_x:pos[0],
       pos_y:pos[1]
     };
@@ -86,6 +102,11 @@ var simGen = function(grid_size, agent_count, threshold){
       }
       return bitmap;
     }
+
+    //for testing
+    ,
+    grid: function(){return agent_grid;},
+    is_happy: function(agent){return is_happy(agent);}
 
   };
 };

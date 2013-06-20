@@ -1,15 +1,11 @@
 function render_grid(grid){
+  var this_td;
   var gridSize = grid.length;
   var table = createTable(gridSize);
   for(var i = 0; i < gridSize; i++){
     for(var j = 0; j < gridSize; j++){
       this_td = table.find('tr').eq(i).children('td').eq(j);
-      if (grid[i][j]){
-        this_td.addClass('occupied');
-      }
-      else{
-        this_td.removeClass('occupied');
-      }
+      this_td.attr('data-state',grid[i][j]);
     }
   }
   return table;

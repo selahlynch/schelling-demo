@@ -1,9 +1,13 @@
+*fix bug in simulation, agents who shouldnt be happy are being counted as happy
+  
+*refactor code to allow either simulation type
 
-*compare my pattern to the patterns we talked about with Mark
+*compare my object creation pattern to markpattern.js
   *think about pros and cons
 
-*modify it so that it is schelling's simulation with two types of agents
-** but I also keep the ability to have this simulation
+*add wrapFn to schelling js
+
+*enapsulate the global variables in rendering.js
 
 *?make the render behave more smartly, only update the table classes, don't generate a new table
 
