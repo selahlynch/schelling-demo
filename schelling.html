@@ -21,23 +21,27 @@ td{
 [data-state="2"]{
   background: #00aa00;
 }
-</style>
+p
+{
+max-width:650px;
+} </style>
 </head>
 <body>
-This is a simple simulation inspired by Schellings segregation model.<br>
-Each colored square represents an "agent".  An agent doesn't like to <br>
-have too many neighbors.  The threshold dictates how many neighbors <br>
-an agent will accept.  For the right set of parameters, if you press <br>
-update repeatedly, the pattern will reach a steady state. <br>
+<p>
+This is a demonstration of Schelling's segregation model.  Each square represents an
+agent.  Each agent wants a some agents of it's same color neighboring it.  
+If there are less than threshold similarly colored agents, the agent will be unhappy and will
+move randomly to an unoccupied location on the grid.  If it is happy it will stay put.
+</p>
 <br>
 <label for="grid-size-inp">Grid size</label>
 <input type="text" id="grid-size-inp" value="12"/>
 <br>
 <label for="num-agents-inp">Number of Agents</label>
-<input type="text" id="num-agents-inp" value="75"/>
+<input type="text" id="num-agents-inp" value="100"/>
 <br>
 <label for="agent-threshold-inp">Agent Threshold</label>
-<input type="text" id="agent-threshold-inp" value="4"/>
+<input type="text" id="agent-threshold-inp" value="3"/>
 <br>
 <button id="init-button0">Initialize0</button>
 <button id="init-button1">Initialize1</button>
