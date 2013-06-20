@@ -1,15 +1,14 @@
 
-*connect input boxes to my grid simulator
-
-*improve the object orientedness of my grid simulator
+*make a run/stop button
 
 *make it so I can have three simultaneous grid simulators
 
-*make a continuing animation that cycles through one agent at a time and moves it to a new location
+*modify it so that it is schelling's simulation with two types of agents
+** but I also keep the ability to have this simulation
 
-*style the table cells to have less wasted space
+*?make the render behave more smartly, only update the table classes, don't generate a new table
 
-
+* involve angular.js in the mix, maybe as a separate branch
 
 
 
