@@ -1,8 +1,18 @@
 //is this object too big??
-var simGen = function(){
+var simGen = function(grid_size, agent_count, threshold){
 
-  var grid_size, agent_count, threshold;
   var agent_grid, agent_array;
+
+  var init = function(gs, ac, th){ //maybe this isn't the best style??
+    grid_size = gs;
+    agent_count = ac; 
+    threshold = th;
+    agent_grid = zeros([grid_size, grid_size]);
+    agent_array = [];
+    for(var i = 0; i < agent_count; i++){
+      place_new_agent(available_position());
+    }
+  };
 
   var available_position = function(){
     avpos = available_positions();
@@ -55,18 +65,9 @@ var simGen = function(){
     agent_array.push(agent);
   };
 
-  return {
-    init: function(gs, ac, th){ //maybe this isn't the best style??
-      grid_size = gs;
-      agent_count = ac; 
-      threshold = th;
-      agent_grid = zeros([grid_size, grid_size]);
-      agent_array = [];
-      for(var i = 0; i < agent_count; i++){
-        place_new_agent(available_position());
-      }
-    },
+  init(grid_size, agent_count, threshold);
 
+  return {
     update: function(){
       for(var i = 0; i < agent_count; i++){
         if(!is_happy(agent_array[i])){

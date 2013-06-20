@@ -1,12 +1,15 @@
 
 *make a run/stop button
 
+*compare my pattern to the patterns we talked about with Mark
+  *think about pros and cons
+
 *modify it so that it is schelling's simulation with two types of agents
 ** but I also keep the ability to have this simulation
 
 *?make the render behave more smartly, only update the table classes, don't generate a new table
 
-* involve angular.js in the mix, maybe as a separate branch
+*involve angular.js in the mix, maybe as a separate branch
 
 
 
