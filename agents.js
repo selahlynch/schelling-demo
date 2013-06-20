@@ -1,6 +1,5 @@
 //is this object too big??
-var sim = [];
-sim[1] = function(){
+var simGen = function(){
 
   var grid_size, agent_count, threshold;
   var agent_grid, agent_array;
@@ -88,7 +87,7 @@ sim[1] = function(){
     }
 
   };
-}();
+};
 
 
 ////functions external to this object/////

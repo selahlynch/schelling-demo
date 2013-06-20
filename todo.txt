@@ -1,8 +1,6 @@
 
 *make a run/stop button
 
-*make it so I can have three simultaneous grid simulators
-
 *modify it so that it is schelling's simulation with two types of agents
 ** but I also keep the ability to have this simulation
 
