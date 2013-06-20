@@ -16,9 +16,9 @@ function createTable(tableSize)
 {
 //not making any assumptions about DOM layout
   var table = $('<table></table>');
-  for(i=0; i<tableSize; i++){
+  for(var i=0; i<tableSize; i++){
     var row = $('<tr></tr>');
-    for(j=0; j<tableSize; j++){
+    for(var j=0; j<tableSize; j++){
       var cell = $('<td></td>');
       row.append(cell);
     }
