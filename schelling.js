@@ -17,6 +17,14 @@ $(document).ready(function(){
         update(save_j);
       };
     }());    
+
+    $("#runstop"+j).click(function(){
+      var save_j = j;
+      return function(){
+        runstop(save_j);
+      };
+    }());        
+    
   }
 
 }); 
@@ -41,7 +49,20 @@ var print_table = function(i){
   $("#table-div"+i).html(tbl);    
 };
 
-
+var runstop = function(i){
+  var runstopButt, txt, newtxt, interval;
+  runstopButt = $("#runstop"+i);
+  txt = runstopButt.text();
+  if (txt=="Run"){
+    intervalId = setInterval(function(){update(i);}, 200);
+    newtxt = "Stop";  
+  }
+  if (txt=="Stop"){
+    clearInterval(intervalId);
+    newtxt = "Run";
+  }
+  runstopButt.text(newtxt);
+};
 
 
 

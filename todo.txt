@@ -1,6 +1,4 @@
 
-*make a run/stop button
-
 *compare my pattern to the patterns we talked about with Mark
   *think about pros and cons
 
