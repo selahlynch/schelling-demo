@@ -1,21 +1,22 @@
-*fix bug in simulation, agents who shouldnt be happy are being counted as happy
-  
-*refactor code to allow either simulation type
-
-*compare my object creation pattern to markpattern.js
-  *think about pros and cons
-
-*add wrapFn to schelling js
-
-*enapsulate the global variables in rendering.js
-
 *?make the render behave more smartly, only update the table classes, don't generate a new table
 
-*involve angular.js in the mix, maybe as a separate branch
+-add a readme
+
+-make sure the simulation stops once it reaches a steady state
+
+-make the parameterization and initialization more user friendly
+
+*fix bug in simulation, agents who shouldnt be happy are being counted as happy
+???is this true??? Why hou??
+
+*encapsulate the global variables in rendering.js
+
+*involve angular.js in the mix, maybe as a separate branch, save vanialla as separate branch?
+
+*try to use inheritance to make a similar simulation with slightly different rules, game of life?
 
 
-
-
+DONE
 
 
 
