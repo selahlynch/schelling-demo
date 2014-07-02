@@ -1,1 +1,77 @@
-hello write something here
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<script src="js/agents.js"></script>
+<script src="js/rendering.js"></script>
+<script src="js/schelling.js"></script>
+<style>
+div.sim-div{
+  float: left;
+  padding:10px;
+}
+td{
+  border:1px solid #000;
+  width:10px;
+  height:10px;
+}
+[data-state="1"]{
+  background: #0000aa;
+}
+[data-state="2"]{
+  background: #00aa00;
+}
+p
+{
+max-width:650px;
+} </style>
+</head>
+<body>
+<p>
+TThis is a demonstration of Schelling's segregation model.  Each square represents an
+agent.  Each agent wants a some agents of it's same color neighboring it.  
+If there are less than threshold similarly colored agents, the agent will be unhappy and will
+move randomly to an unoccupied location on the grid.  If it is happy it will stay put.
+</p>
+<br>
+<label for="grid-size-inp">Grid size</label>
+<input type="text" id="grid-size-inp" value="12"/>
+<br>
+<label for="num-agents-inp">Number of Agents</label>
+<input type="text" id="num-agents-inp" value="100"/>
+<br>
+<label for="agent-threshold-inp">Agent Threshold</label>
+<input type="text" id="agent-threshold-inp" value="3"/>
+<br>
+<button id="init-button0">Initialize0</button>
+<button id="init-button1">Initialize1</button>
+<button id="init-button2">Initialize2</button>
+<br>
+<br>
+<br>
+<div id="sim-div0" class="sim-div">
+  <h4 id="param0"></h4>
+  <div id="table-div0"></div>
+  <button id="update-button0">Update</button>  
+  <button id="runstop0">Run</button>  
+</div>
+<div id="sim-div1" class="sim-div">
+  <h4 id="param1"></h4>
+  <div id="table-div1"></div>
+  <button id="update-button1">Update</button>  
+  <button id="runstop1">Run</button>  
+</div>
+<div id="sim-div2" class="sim-div">
+  <h4 id="param2"></h4>
+  <div id="table-div2"></div>
+  <button id="update-button2">Update</button>  
+  <button id="runstop2">Run</button>  
+</div>
+<br>
+</body>
+</html> 
+
+
+
+
+
