@@ -4,7 +4,7 @@ populations where no individual has a strong preference for segregation.
 https://class.coursera.org/modelthinking/lecture/16
 
 See this application in action:
-http://schelling-demo.herokuapp.com/schelling.html
+http://schelling-demo-2.herokuapp.com/
 
 
 
